@@ -86,9 +86,9 @@ class MyLinearRegression:
         m = y.shape[0]
         return (1 / (2 * m)) * np.sum((y_hat - y) ** 2)
 
-    # @staticmethod
-    # def mse_(y, y_hat):
-    #    squared_diff = (y_hat - y) ** 2
-    #    if squared_diff is None:
-    #        return None
-    #    return np.mean(squared_diff)
+    @staticmethod
+    def mse_(y, y_hat):
+        squared_diff = (y_hat - y) ** 2
+        if squared_diff is None:
+            return None
+        return np.mean(squared_diff)
