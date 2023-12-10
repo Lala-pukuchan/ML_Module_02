@@ -23,7 +23,7 @@ plt.ylabel("y: sell price (in keuros)")
 plt.scatter(X1, y_pred, color="cyan", s=5, label="Predicted sell price")
 plt.scatter(X1, Y, color="blue", label="Sell price")
 plt.legend()
-plt.savefig("results/ex06/result_ex06_figure1.png")
+plt.savefig("results/ex06/result_ex06_figure1-1.png")
 plt.close()
 
 # initial theta, alpha and max_iter values should be changed to get a better fit
@@ -38,7 +38,7 @@ plt.ylabel("y: sell price (in keuros)")
 plt.scatter(X2, y_pred, color="lime", s=5, label="Predicted sell price")
 plt.scatter(X2, Y, color="green", label="Sell price")
 plt.legend()
-plt.savefig("results/ex06/result_ex06_figure2.png")
+plt.savefig("results/ex06/result_ex06_figure1-2.png")
 plt.close()
 
 X3 = np.array(data[["Terameters"]])
@@ -52,12 +52,11 @@ plt.ylabel("y: sell price (in keuros)")
 plt.scatter(X3, y_pred, color="pink", s=5, label="Predicted sell price")
 plt.scatter(X3, Y, color="purple", label="Sell price")
 plt.legend()
-plt.savefig("results/ex06/result_ex06_figure3.png")
+plt.savefig("results/ex06/result_ex06_figure1-3.png")
 plt.close()
 
 print("\n--- Part.2 ---")
 X = np.array(data[["Age", "Thrust_power", "Terameters"]])
-print("X.shape :", X.shape)
 Y = np.array(data[["Sell_price"]])
 # my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=1e-4, max_iter=600000)
 my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=1e-5, max_iter=600000)
@@ -73,3 +72,23 @@ print("expected :", np.array([[334.994], [-22.535], [5.857], [-2.586]]))
 prediction_after_fit = my_lreg.predict_(X)
 print("my mse after fit :", my_lreg.mse_(Y, prediction_after_fit))
 print("expected         :", 586.896999)
+
+# Plotting
+features = ["Age", "Thrust_power", "Terameters"]
+for i, feature in enumerate(features):
+    plt.figure(i)
+    plt.scatter(data[feature], Y, color="blue", label="Actual Prices")
+    plt.scatter(
+        data[feature],
+        prediction_after_fit,
+        color="red",
+        label="Predicted Prices",
+        marker="x",
+        s=5,
+    )
+    plt.xlabel(feature)
+    plt.ylabel("Sell Price")
+    plt.title(f"Actual vs Predicted Sell Prices vs {feature}")
+    plt.legend()
+    plt.savefig(f"results/ex06/result_ex06_figure2-{i}.png")
+    plt.close()

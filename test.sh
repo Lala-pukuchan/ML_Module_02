@@ -17,8 +17,11 @@ fi
 
 for i in {0..9}
 do
-    python3 ex0$i/test.py > results/ex0$i/result.txt
+    if [[ $i -ne 6 ]] && [[ $i -ne 8 ]]; then
+        python3 ex0$i/test.py > results/ex0$i/result.txt
+    fi
 done
 
 python3 ex06/multivariate_linear_model.py > results/ex06/result.txt
+python3 ex08/polynomial_train.py > results/ex08/result.txt
 python3 ex10/test.py > results/ex10/result.txt
