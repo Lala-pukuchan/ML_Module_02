@@ -34,7 +34,7 @@ def data_spliter(x, y, proportion):
     split_idx = int(combined.shape[0] * proportion)
     x_train = combined[:split_idx, :-1]
     x_test = combined[split_idx:, :-1]
-    y_train = combined[:split_idx, -1]
-    y_test = combined[split_idx:, -1]
+    y_train = combined[:split_idx, -1:]
+    y_test = combined[split_idx:, -1:]
 
     return (x_train, x_test, y_train, y_test)
