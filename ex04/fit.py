@@ -1,5 +1,5 @@
 import numpy as np
-
+from ex03.gradient import gradient
 
 def fit_(x, y, theta, alpha, max_iter):
     """
@@ -39,11 +39,7 @@ def fit_(x, y, theta, alpha, max_iter):
     if max_iter < 0:
         return None
 
-    x = np.insert(x, 0, 1, axis=1)
-
-    for i in range(max_iter):
-        m = x.shape[0]
-        error = np.dot(x, theta) - y
-        theta = theta - alpha * (np.dot(x.T, error) / m)
+    for _ in range(max_iter):
+        theta = theta - alpha * gradient(x, y, theta)
 
     return theta
