@@ -11,6 +11,12 @@ do
     fi
 done
 
+# get current directory
+currentDir=$(pwd)
+
+# Export the new path to PYTHONPATH
+export PYTHONPATH="$currentDir:$PYTHONPATH"
+
 if [ ! -d "results/ex10" ]; then
     mkdir results/ex10
 fi

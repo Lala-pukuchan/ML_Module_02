@@ -29,9 +29,11 @@ def simple_predict(x, theta):
         return None
 
     # Add a column of ones to x to account for the bias term in theta
-    x = np.hstack((np.ones((x.shape[0], 1)), x))
+    x_insert = np.hstack((np.ones((x.shape[0], 1)), x))
 
-    # Compute the prediction using dot product
-    y_hat = np.dot(x, theta)
+    # Compute the prediction using for loop
+    y_hat = np.zeros((x.shape[0], 1))
+    for i in range(x.shape[0]):
+        y_hat[i] = np.dot(x_insert[i], theta)
 
     return y_hat
