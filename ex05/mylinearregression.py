@@ -50,12 +50,8 @@ class MyLinearRegression:
         if self.max_iter < 0:
             return None
 
-        x = np.insert(x, 0, 1, axis=1)
-
         for _ in range(self.max_iter):
-            m = x.shape[0]
-            error = np.dot(x, self.theta) - y
-            self.theta = self.theta - self.alpha * (np.dot(x.T, error) / m)
+            self.theta = self.theta - self.alpha * self.gradient(x, y)
 
         return self.theta
 
