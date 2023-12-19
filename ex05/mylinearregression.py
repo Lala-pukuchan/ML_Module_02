@@ -52,7 +52,7 @@ class MyLinearRegression:
 
         x = np.insert(x, 0, 1, axis=1)
 
-        for i in range(self.max_iter):
+        for _ in range(self.max_iter):
             m = x.shape[0]
             error = np.dot(x, self.theta) - y
             self.theta = self.theta - self.alpha * (np.dot(x.T, error) / m)
