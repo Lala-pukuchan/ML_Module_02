@@ -1,6 +1,6 @@
 import numpy as np
 from gradient import gradient
-
+print("---ex.1---")
 x = np.array(
     [
         [-6, -7, -9],
@@ -18,8 +18,11 @@ theta1 = np.array([0, 3, 0.5, -6]).reshape((-1, 1))
 print(gradient(x, y, theta1))
 # Output:
 # array([[-33.71428571], [-37.35714286], [183.14285714], [-393.0]])
+print("expected: \n", np.array([[-33.71428571], [-37.35714286], [183.14285714], [-393.0]]))
+print("\n---ex.2---")
 # Example :
 theta2 = np.array([0, 0, 0, 0]).reshape((-1, 1))
 print(gradient(x, y, theta2))
 # Output:
 # array([[-0.71428571], [0.85714286], [23.28571429], [-26.42857143]])
+print("expected: \n", np.array([[-0.71428571], [0.85714286], [23.28571429], [-26.42857143]]))
