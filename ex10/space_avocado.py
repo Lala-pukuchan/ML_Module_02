@@ -14,13 +14,13 @@ y = np.array(data["target"]).reshape(-1, 1)
 with open("ex10/models.pkl", "rb") as file:
     models = pickle.load(file)
 
-# Find the best model
-best_degree = min(models, key=lambda k: models[k]["mse"])
-best_theta = models[best_degree]["theta"]
+# Identify the best model (minimum test MSE)
+best_degree = min(models, key=lambda k: models[k]["test_mse"])
+best_model_info = models[best_degree]
+best_model = best_model_info["model"]
 
-# Create polynomial features
+# Predict using the best model
 x_poly = add_polynomial_features(x, best_degree)
-best_model = MyLR(best_theta, alpha=1e-5, max_iter=600000)
 predictions = best_model.predict_(x_poly)
 
 # Plotting actual vs predicted values for each feature
@@ -34,6 +34,6 @@ for i in range(x.shape[1]):
     plt.xlabel(feature_names[i])
     plt.ylabel("Target")
     plt.legend()
-plt.suptitle(f"Actual vs Predicted - Best Model (Degree {best_degree})")
-plt.savefig("results/ex10/result_ex10_figure-1.png")
-plt.close()
+    plt.suptitle(f"Actual vs Predicted - Best Model (Degree {best_degree})")
+    plt.savefig(f"results/ex10/result_ex10_figure-{i}.png")
+    plt.close()

@@ -37,7 +37,7 @@ for degree in range(1, 5):
         max_iter = 10000000
     elif degree == 4:
         alpha = 1e-27
-        max_iter = 100000000
+        max_iter = 10000000
     model = MyLR(theta, alpha, max_iter)
 
     # Fit the model
@@ -50,12 +50,13 @@ for degree in range(1, 5):
     print("--- degree", degree, "---")
     print("train_mse:", train_mse)
     print("test_mse :", test_mse)
+    print("theta :", model.theta)
 
     # Store model and performance
     models_performance[degree] = {"model": model, "train_mse": train_mse, "test_mse": test_mse}
 
 # Save the models to a file
-with open("models.pkl", "wb") as file:
+with open("ex10/models.pkl", "wb") as file:
     pickle.dump(models_performance, file)
 
 # Plotting MSE for each model
