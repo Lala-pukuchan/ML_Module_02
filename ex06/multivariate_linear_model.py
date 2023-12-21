@@ -64,8 +64,18 @@ plt.close()
 print("\n--- Part.2 ---")
 X = np.array(data[["Age", "Thrust_power", "Terameters"]])
 Y = np.array(data[["Sell_price"]])
-# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=1e-4, max_iter=600000)
-my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=1000000)
+
+# since learning rate is too big, it doesn't converge.
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=1e-4, max_iter=600000) can't compute
+
+# make learning rate smaller to take smaller steps
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=700000) 640
+my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=750000)
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=800000) 545
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=900000) 490
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=1000000) 458
+# my_lreg = MyLR(theta=[1.0, 1.0, 1.0, 1.0], alpha=4e-5, max_iter=1100000) 439
+
 initial_prediction = my_lreg.predict_(X)
 print("my mse   :", my_lreg.mse_(Y, initial_prediction))
 print("expected :", 144044.877)
