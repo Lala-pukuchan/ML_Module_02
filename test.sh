@@ -30,4 +30,4 @@ done
 
 python3 ex06/multivariate_linear_model.py > results/ex06/result.txt
 python3 ex08/polynomial_train.py > results/ex08/result.txt
-python3 ex10/space_avocado.py > results/ex10/result.txt
+python3 ex10/space_avocado.py
