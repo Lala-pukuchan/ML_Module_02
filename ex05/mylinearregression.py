@@ -8,6 +8,15 @@ class MyLinearRegression:
     """
 
     def __init__(self, theta, alpha=0.001, max_iter=1000):
+        
+        # error management
+        if not isinstance(alpha, float) or alpha <= 0:
+            raise ValueError("Alpha must be a positive float")
+        if not isinstance(max_iter, int) or max_iter <= 0:
+            raise ValueError("max_iter must be a positive integer")
+        if not isinstance(theta, (list, np.ndarray)):
+            raise TypeError("Theta must be a list or numpy array")
+
         self.alpha = alpha
         self.max_iter = max_iter
         self.theta = np.array(theta).reshape(-1, 1)
